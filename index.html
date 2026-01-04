@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ocean Flow & Whale Presence</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <h1>Ocean Flow & Whale Presence</h1>
+    <p>Explore how cetacean observations overlap with sea currents in European waters and the North Atlantic.</p>
+    <a class="btn" href="#explore">Explore the data</a>
+  </header>
+
+  <main id="explore" class="layout">
+    <aside class="panel">
+      <h2>Filters</h2>
+
+      <label class="field">
+        Dataset range
+        <select id="rangeSelect">
+          <option value="2011_2012" selected>2011–2012 (aligned with ECCO)</option>
+          <option value="2010_2013">2010–2013 (OBIS full)</option>
+        </select>
+      </label>
+
+      <label class="field">
+        Species
+        <select id="speciesSelect"></select>
+      </label>
+
+      <div class="field">
+        <div class="row">
+          <span>Time</span>
+          <span id="timeLabel" class="muted"></span>
+        </div>
+        <input id="timeSlider" type="range" min="0" max="23" step="1" value="0">
+        <div class="row tiny muted">
+          <span>Start</span><span>End</span>
+        </div>
+        <button id="playBtn" class="btn small">Play</button>
+      </div>
+
+      <div class="field">
+        <strong>Layers</strong>
+        <label class="check"><input type="checkbox" id="whalesToggle" checked> Whales</label>
+        <label class="check"><input type="checkbox" id="currentsToggle" checked> Currents</label>
+      </div>
+
+      <div class="field">
+        <strong>Bookmarks</strong>
+        <div class="bookmarks">
+          <button data-bm="med" class="chip">Mediterranean</button>
+          <button data-bm="biscay" class="chip">Bay of Biscay</button>
+          <button data-bm="norway" class="chip">Norwegian Sea</button>
+          <button data-bm="northsea" class="chip">North Sea</button>
+          <button data-bm="iceland" class="chip">Iceland</button>
+        </div>
+      </div>
+
+      <p class="note">
+        Note: OBIS observations are presence records (not tracked individuals). Currents data may cover a narrower time span.
+      </p>
+    </aside>
+
+    <section class="content">
+      <div id="map" class="map"></div>
+
+      <div class="charts">
+        <section class="card">
+          <h3>Seasonality (monthly presence)</h3>
+          <div id="seasonality"></div>
+        </section>
+
+        <section class="card">
+          <h3>Top species (current filter)</h3>
+          <div id="speciesChart"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
