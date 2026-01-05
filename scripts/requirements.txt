@@ -1,0 +1,20 @@
+# za python 3.10 obstaja novejši 1.0.71, vendar ni imel znakov da je za macos, zato sem ostal na prejšnji verziji
+openvisuspy ==1.0.71
+OpenVisus == 2.2.141
+
+# teh toolov setuptools in wheel nista zaznala, zato sem šel enega in po enega, kar je manjkalo openvisusy da se je naložil
+xmltodict
+boto3
+requests
+colorcet
+bokeh
+panel
+
+numpy
+matplotlib
+ipykernel
+xarray
+
+# engina za xarray
+netcdf4
+h5netcdf
